@@ -18,14 +18,14 @@
 </head>
 
 <body>
-  <!--mars info-->
+  <!--mars info header-->
   <div class="container-fluid">
     <div class="jumbotron" style="background-image: url({{mars.Featured_image}})">
       <div class="row" >
         <div class="col-md-6">
          
         </div>
-        <div class="col-md-6" style="background-color: rgba(255, 255, 255, .90)" style="padding-bottom:80px;">
+        <div class="col-md-6" style="background-color: rgba(255, 255, 255, .90); padding: 30px;">
           <h3>{{ mars.Title }}</h3>
           <p>{{ mars.Description }}</p>
           <p>Weather: {{ mars.Weather }}<br />
@@ -36,8 +36,6 @@
         </div>
       </div>
   </div>
-  
-
   <!-- Mars Hemispheres -->
   <div class="row" id="mars-hemispheres" style="margin-top:80px;">
   
