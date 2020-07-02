@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Facts</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+ integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+ crossorigin=""></script>
+</head>
+
+<body>
+  <!--mars info-->
+  <div class="container-fluid">
+    <div class="jumbotron" style="background-image: url({{mars.Featured_image}})">
+      <div class="row" >
+        <div class="col-md-6">
+         
+        </div>
+        <div class="col-md-6" style="background-color: rgba(255, 255, 255, .90)" style="padding-bottom:80px;">
+          <h3>{{ mars.Title }}</h3>
+          <p>{{ mars.Description }}</p>
+          <p>Weather: {{ mars.Weather }}<br />
+          {{ mars.Facts | safe}}</p>
+          <hr>
+          <p font-color="whitesmoke">Click To Get The Latest Facts: </p>
+          <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape</a></p>
+        </div>
+      </div>
+  </div>
+  
+
+  <!-- Mars Hemispheres -->
+  <div class="row" id="mars-hemispheres" style="margin-top:80px;">
+  
+    <div class="page-header">
+      <h2 class="text-center">Mars Hemisphere Images</h2>
+    </div>
+    {% for hemisphere in mars.Hemisphere %}
+      <div class="col-md-6">
+          <div class="thumbnail">
+
+          <!-- if images is False/None/non-existent, then default to error message -->
+          <img src="{{hemisphere.Img_url}}"
+              alt="...">
+          <div class="caption">
+              <h3>{{hemisphere.Title}}</h3>
+          </div>
+          </div>
+      </div>
+    {% endfor %}
+
+  </div>
+
+</body>
+
+</html>

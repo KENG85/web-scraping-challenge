@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Facts</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <!--mars info-->
+  <div class="container-fluid">
+    <div class="jumbotron text-center" >
+      <h1>Mars Facts</h1>
+      <p>Click To Get The Latest Facts</p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape</a></p>
+    </div>
+    <div>
+      <h2>Mars Facts: </h2>
+      <h4>{{ mars_data.Title }}</h4>
+      <p>Weather: {{ mars_data.Weather }}</p>
+      <p>Facts: {{ mars_data.Facts }}</p>
+    </div>
+  </div>
+
+  <!-- Mars Hemispheres -->
+  <div class="row" id="mars-hemispheres" style="margin-top:80px;">
+  
+    <div class="page-header">
+      <h2 class="text-center">Mars Hemisphere Images</h2>
+    </div>
+    {% for hemisphere in mars_data.Hemispheres %}
+      <div class="col-md-6">
+          <div class="thumbnail">
+
+          <!-- if images is False/None/non-existent, then default to error message -->
+          <img src="{{mars_data.hemisphere_img | default('static/images/marvin.png', true)}}"
+              alt="...">
+          <div class="caption">
+              <h3>{{hemisphere.Title}}</h3>
+          </div>
+          </div>
+      </div>
+    {% endfor %}
+
+  </div>
+
+</body>
+
+</html>
